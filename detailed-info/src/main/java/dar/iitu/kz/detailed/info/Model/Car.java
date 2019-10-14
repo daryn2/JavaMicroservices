@@ -12,5 +12,6 @@ public class Car {
     private String brand;
     private String colour;
     private String number;
+    private String url;
 
 }

@@ -20,15 +20,15 @@ public class CarDetailedController {
     @GetMapping
     public List<Car> getCars() {
         List<Car> cars = Arrays.asList(
-                new Car("1", "Lexus", "Red", "123123"),
-                new Car("2", "Lexus 123", "Black", "123123")
+                new Car("1", "Lexus", "Red", "123123", "https://www.lexus.com/cm-img/hybridLP/LEX-UXH-hybrid-page-600x342-LEX-UXH-MY19-0006_M75.jpg"),
+                new Car("2", "Lexus 123", "Black", "123123", "https://m.economictimes.com/thumb/height-450,width-800,imgsize-70641,msid-65753363/lexus1.jpg")
         );
         return cars;
     }
     @GetMapping("/{id}")
     public Car getBookById(@PathVariable("id") String id) {
 
-        return new Car("1", "Lexus", "Red", "123123");
+        return new Car("1", "Lexus", "Red", "123123", "https://m.economictimes.com/thumb/height-450,width-800,imgsize-70641,msid-65753363/lexus1.jpg");
     }
 
 }

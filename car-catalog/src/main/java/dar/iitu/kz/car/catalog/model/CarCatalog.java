@@ -15,6 +15,7 @@ public class CarCatalog {
     private String brand;
     private String colour;
     private String number;
+    private String url;
     private List<Integer> rating;
     private List<String> reviews;
 

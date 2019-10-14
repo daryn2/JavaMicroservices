@@ -1,0 +1,1 @@
+export const get_cars = "http://localhost:8081/api/carcatalog"

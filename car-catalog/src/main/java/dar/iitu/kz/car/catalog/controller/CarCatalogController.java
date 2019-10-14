@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -26,6 +23,7 @@ public class CarCatalogController {
     private RestTemplate restTemplate;
 
 
+    @CrossOrigin(origins = "*")
     @GetMapping()
     public List<CarCatalog> getAllCars(){
         List<CarCatalog> carCatalogs = new ArrayList<>();
@@ -50,7 +48,7 @@ public class CarCatalogController {
             List<Integer> ratings = history.stream().map(Rating::getRating).sequential().collect(Collectors.toList());
             List<String> reviews = history.stream().map(Rating::getReview).sequential().collect(Collectors.toList());
 
-            carCatalogs.add(new CarCatalog(car.getId(),car.getBrand(), car.getColour(), car.getNumber(), ratings, reviews));
+            carCatalogs.add(new CarCatalog(car.getId(),car.getBrand(), car.getColour(), car.getNumber(), car.getUrl(), ratings, reviews));
 
         }
 
@@ -70,7 +68,7 @@ public class CarCatalogController {
 
     @PostMapping()
     public Car createCar() {
-        return new Car("1", "Ferrari", "Red", "123123");
+        return new Car("1", "Ferrari", "Red", "123123", "https://m.economictimes.com/thumb/height-450,width-800,imgsize-70641,msid-65753363/lexus1.jpg");
     }
 
 }
