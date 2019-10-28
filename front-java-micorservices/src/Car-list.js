@@ -35,7 +35,7 @@ class CarList extends React.Component {
             return (
                 <div className="col-md-6" key={index}>
                     <div className="car-list__image">
-                        <img src= { entry.url } width="400px"/>
+                        <img src= { entry.url } width="100%"/>
                     </div>
                     <div className="car-list_description">
                         <h5>{ entry.brand }</h5>
@@ -66,7 +66,6 @@ class CarList extends React.Component {
                     <h2> Our best options </h2>
                     <div className="row">
                        { result }
-                        
                     </div>
                     <div className="empty_space">
 

@@ -5,8 +5,7 @@ const Header = () =>
 <div>
     
         <div className="header">
-            <img className="header_image" src={ header }>
-            </img>
+            <img className="header_image" src={ header }></img>
             <div className="image_overlay"></div>
             <div class="text">
                 <h1>Rent car system</h1>

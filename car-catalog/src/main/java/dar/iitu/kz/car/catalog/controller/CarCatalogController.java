@@ -1,6 +1,8 @@
 package dar.iitu.kz.car.catalog.controller;
 
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import dar.iitu.kz.car.catalog.model.Car;
 import dar.iitu.kz.car.catalog.model.CarCatalog;
 import dar.iitu.kz.car.catalog.model.Rating;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,6 +28,14 @@ public class CarCatalogController {
 
     @CrossOrigin(origins = "*")
     @GetMapping()
+    @HystrixCommand(
+            fallbackMethod = "getFallbackCatalog",
+            threadPoolKey = "carInfoPool",
+            threadPoolProperties = {
+                    @HystrixProperty(name = "coreSize", value = "20"),
+                    @HystrixProperty(name = "maxQueueSize", value = "10")
+            }
+    )
     public List<CarCatalog> getAllCars(){
         List<CarCatalog> carCatalogs = new ArrayList<>();
         ResponseEntity<List<Car>> response = restTemplate.exchange(
@@ -53,6 +64,10 @@ public class CarCatalogController {
         }
 
         return carCatalogs;
+    }
+
+    public List<CarCatalog> getFallbackCatalog() {
+        return Arrays.asList(new CarCatalog("0", "No brand", "No colour", "No number", "No image", Arrays.asList(0), Arrays.asList("no reviews")));
     }
 
 
