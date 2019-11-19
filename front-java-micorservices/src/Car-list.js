@@ -8,7 +8,7 @@ class CarList extends React.Component {
     // send request to the server
     constructor() {
         super()
-        this.state = {
+         this.state = {
             data:[]
         }
     }
@@ -18,12 +18,37 @@ class CarList extends React.Component {
     }
     // send request to the server
     async fetchData() {
+
+
         var url = constants.get_cars
-        const response = await axios.get(url)
-        console.log(response);
-        this.setState({
-            data: response.data
-        })
+        const token = localStorage.token;
+
+       
+        const AuthStr = 'Bearer '.concat(token); 
+
+        axios.get(url, { headers: { Authorization: AuthStr }, withCredentials:true })
+        .then(response => {
+            console.log(response.data);
+            this.setState({
+                data: response.data
+            })
+         })
+        .catch((error) => {
+            console.log('error ' + error);
+         });            
+        // fetch(url, {
+        //     method:'GET',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         Accept: 'application/json',
+        //         'Authorization': `Bearer ${token}`
+        //       }
+        // }).then(function(response) {
+        //     console.log(response)
+            // this.setState({
+            //     data: response.data
+            // })
+        // })
         
         
     }
@@ -40,11 +65,11 @@ class CarList extends React.Component {
                     <div className="car-list_description">
                         <h5>{ entry.brand }</h5>
                         <div className="ratings">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
+                            <span className="fa fa-star checked"></span>
+                            <span className="fa fa-star checked"></span>
+                            <span className="fa fa-star checked"></span>
+                            <span className="fa fa-star"></span>
+                            <span className="fa fa-star"></span>
                         </div>
                         <h6> Last reviews: </h6>
                         { entry.reviews.map((answer, i) => {

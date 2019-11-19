@@ -1,14 +1,15 @@
 import React from 'react'
+import './Nav.css'
 
 
 
 
 const Navbar = () =>
 
-<nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+<nav className="navbar navbar-expand navbar-dark bg-dark">
+    <a className="navbar-brand" href="#">Navbar</a>
+    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
     </button>
 
   <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -20,7 +21,7 @@ const Navbar = () =>
         <a className="nav-link" href="#">Link</a>
       </li>
       <li className="nav-item">
-        <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Disabled</a>
       </li>
     </ul>
     <form className="form-inline my-2 my-lg-0">
