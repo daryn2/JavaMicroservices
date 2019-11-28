@@ -20,6 +20,7 @@ class AuthProvider extends React.Component {
         })
         .then(function(response) {
             localStorage.setItem("token", response.data)
+            
             console.log(response.data);
             console.log("there")
         });

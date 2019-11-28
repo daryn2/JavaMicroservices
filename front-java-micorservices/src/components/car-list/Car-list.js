@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import * as constants from './constants/request-constants'
+import * as constants from '../../constants/request-constants'
 import axios from 'axios'
 import './Car-list.css'
-import car1 from './assets/1.jpg'
 
 class CarList extends React.Component {
     // send request to the server
@@ -36,19 +35,7 @@ class CarList extends React.Component {
         .catch((error) => {
             console.log('error ' + error);
          });            
-        // fetch(url, {
-        //     method:'GET',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         Accept: 'application/json',
-        //         'Authorization': `Bearer ${token}`
-        //       }
-        // }).then(function(response) {
-        //     console.log(response)
-            // this.setState({
-            //     data: response.data
-            // })
-        // })
+        
         
         
     }
@@ -88,7 +75,7 @@ class CarList extends React.Component {
         return (
             <div className="car-list">
                 <div className="container">
-                    <h2> Our best options </h2>
+                    <h2> Каталог </h2>
                     <div className="row">
                        { result }
                     </div>

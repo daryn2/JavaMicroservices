@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableEurekaClient
 @EnableCircuitBreaker
 @EnableHystrixDashboard
+
 public class CarCatalogApplication {
 
 	@Bean

@@ -1,0 +1,25 @@
+nav {
+
+    position: absolute;
+    width: 100%;
+
+}
+nav img {
+    width: 55px;
+}
+.inline {
+    display: inline-block; 
+    margin:10px;
+}
+.navbar__content a, .navbar__right a {
+    padding-left:  20px;
+    color:black;
+    font-weight: 300;
+}
+
+.registration {
+    
+    /* border-radius: 100px;
+    background-color: #ffffff; */
+
+}
