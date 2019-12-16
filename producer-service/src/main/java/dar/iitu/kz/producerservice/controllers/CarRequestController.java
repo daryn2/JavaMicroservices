@@ -5,10 +5,7 @@ import dar.iitu.kz.producerservice.model.CarRequest;
 import dar.iitu.kz.producerservice.services.CarInformationService;
 import dar.iitu.kz.producerservice.services.Producer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value="/car/request")
@@ -25,6 +22,7 @@ public class CarRequestController {
     }
 
     @GetMapping
+    @CrossOrigin("*")
     public String sendMessageToKafkaTopic2(@RequestParam("userId") String userId,
                                            @RequestParam("bookId") String bookId) {
 

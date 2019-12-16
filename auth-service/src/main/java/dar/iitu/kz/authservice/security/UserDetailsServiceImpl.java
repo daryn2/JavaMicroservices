@@ -1,6 +1,8 @@
 package dar.iitu.kz.authservice.security;
 
 
+import dar.iitu.kz.authservice.model.AppUser;
+import dar.iitu.kz.authservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -16,19 +18,23 @@ import java.util.List;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
+
     @Autowired
-    private BCryptPasswordEncoder encoder;
+    private UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        System.out.println("there");
 
         // hard coding the users. All passwords must be encoded.
 
 
-        final List<AppUser> users = Arrays.asList(
-                new AppUser(1, "omar", encoder.encode("12345"), "USER"),
-                new AppUser(2, "admin", encoder.encode("12345"), "ADMIN")
-        );
+
+//        final List<AppUser> users = Arrays.asList(
+//                new AppUser(1, "omar", encoder.encode("12345"), "USER"),
+//                new AppUser(2, "admin", encoder.encode("12345"), "ADMIN")
+//        );
+            final List<AppUser> users = userRepository.findAll();
 
 
         for(AppUser appUser: users) {
@@ -50,47 +56,47 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     // A (temporary) class represent the user saved in the database.
-    private static class AppUser {
-        private Integer id;
-        private String username, password;
-        private String role;
-
-        public AppUser(Integer id, String username, String password, String role) {
-            this.id = id;
-            this.username = username;
-            this.password = password;
-            this.role = role;
-        }
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-        public String getRole() {
-            return role;
-        }
-
-        public void setRole(String role) {
-            this.role = role;
-        }
-    }
+//    private static class AppUser {
+//        private Integer id;
+//        private String username, password;
+//        private String role;
+//
+//        public AppUser(Integer id, String username, String password, String role) {
+//            this.id = id;
+//            this.username = username;
+//            this.password = password;
+//            this.role = role;
+//        }
+//
+//        public Integer getId() {
+//            return id;
+//        }
+//
+//        public void setId(Integer id) {
+//            this.id = id;
+//        }
+//
+//        public String getUsername() {
+//            return username;
+//        }
+//
+//        public void setUsername(String username) {
+//            this.username = username;
+//        }
+//
+//        public String getPassword() {
+//            return password;
+//        }
+//
+//        public void setPassword(String password) {
+//            this.password = password;
+//        }
+//        public String getRole() {
+//            return role;
+//        }
+//
+//        public void setRole(String role) {
+//            this.role = role;
+//        }
+//    }
 }

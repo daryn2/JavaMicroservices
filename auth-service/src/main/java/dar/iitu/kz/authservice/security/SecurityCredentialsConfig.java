@@ -1,7 +1,7 @@
 package dar.iitu.kz.authservice.security;
 
 
-import dar.iitu.kz.commonservice.security.JwtConfig;
+import dar.iitu.kz.authservice.model.JwtConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -50,6 +50,9 @@ public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 // allow all POST requests
                 .antMatchers(HttpMethod.POST, jwtConfig.getUri()).permitAll()
+                .antMatchers(HttpMethod.GET, "/reg").permitAll()
+                .antMatchers(HttpMethod.POST, "/reg").permitAll()
+
                 // any other requests must be authenticated
                 .anyRequest().authenticated();
     }
